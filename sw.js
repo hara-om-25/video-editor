@@ -2,7 +2,7 @@
 // Спершу кеш — застосунок відкривається миттєво й без інтернету (і при поганому зв'язку не чекає мережу).
 // Нові версії приходять так: сторінка сама порівнює APP_VER на сайті (checkUpdate, запит з ?u=… — лише мережа),
 // просить оновити цей файл; новий sw.js з новим CACHE завантажує свіжі файли — і сторінка перезапускається.
-const CACHE = 'video-editor-v223';
+const CACHE = 'video-editor-v224';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './fonts/tektur-cyrillic.woff2', './fonts/tektur-cyrillic-ext.woff2', './fonts/tektur-latin.woff2', './fonts/tektur-latin-ext.woff2'];
 
@@ -16,8 +16,8 @@ self.addEventListener('activate', e => {
   ).then(() => self.clients.claim()));
 });
 const INBOX = 'share-video-editor';
-const AICACHE = 'ai1-video-editor';
-const ASRCACHE = 'asr1-video-editor';   // asr1 — змінити, коли зміняться файли в asr/   // ai1 — змінити, коли зміняться файли в ai/     // не з префіксом CACHE — інакше activate її стер би
+const AICACHE = 'ai1-video-editor';   // ai1 — змінити, коли зміняться файли в ai/   (не з префіксом CACHE — інакше activate її стер би)
+const ASRCACHE = 'asr2-video-editor';  // asr2 — змінити, коли зміняться файли в asr/ (розпізнавання мови аудіоплеєра)
 self.addEventListener('fetch', e => {
   const req = e.request;
   // «Поділитися» → файли кладемо у вхідні й відкриваємо застосунок; сторінка забере їх у плейлист
